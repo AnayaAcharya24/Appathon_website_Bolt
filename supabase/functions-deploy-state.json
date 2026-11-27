@@ -1,0 +1,9 @@
+{
+  "projectId": "73253192",
+  "functions": {
+    "send-confirmation": {
+      "hasChanged": false,
+      "hash": "12f926d44731914276a51b0ccd860304e2aa560734daad7cf146fba5368ac678"
+    }
+  }
+}

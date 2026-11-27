@@ -1,0 +1,4 @@
+project_id = "appathon"
+
+[functions.send-confirmation]
+verify_jwt = true

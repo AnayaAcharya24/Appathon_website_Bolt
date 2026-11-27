@@ -1,0 +1,255 @@
+.about-journey {
+  position: relative;
+  isolation: isolate;
+  overflow: visible;
+  background: linear-gradient(
+    180deg,
+    #f1e8ff 0%,
+    #ffffff 66%,
+    #faf7ff 84%,
+    #eee5fb 91%,
+    #5c457b 97%,
+    #080810 100%
+  );
+  color: #171124;
+}
+.about-journey__container {
+  position: relative;
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  padding-bottom: 280px;
+}
+.about-journey__curve {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+}
+.about-journey__curve path {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.about-journey__curve-track {
+  stroke: rgba(112, 36, 216, 0.12);
+  stroke-width: 9px;
+}
+.about-journey__curve-glow {
+  stroke: rgba(166, 74, 255, 0.5);
+  stroke-width: 22px;
+  filter: blur(9px);
+}
+.about-journey__curve-core {
+  stroke: url(#journey-curve-gradient);
+  stroke: #7024d8;
+  stroke-width: 9px;
+}
+.about-journey__end-glow {
+  position: absolute;
+  right: -210px;
+  bottom: -230px;
+  z-index: 0;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(190, 120, 255, 0.8) 0%,
+    rgba(166, 74, 255, 0.4) 28%,
+    rgba(112, 36, 216, 0.15) 52%,
+    transparent 70%
+  );
+  opacity: var(--journey-progress, 0);
+  pointer-events: none;
+  transform: scale(calc(0.4 + var(--journey-progress, 0) * 0.6));
+  transform-origin: 50% 50%;
+}
+.about-journey__row {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 470px 470px;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 300px;
+  padding: 28px;
+}
+.about-journey__row--left .about-journey__image {
+  grid-column: 1;
+  grid-row: 1;
+}
+.about-journey__row--left .about-journey__text {
+  grid-column: 2;
+  grid-row: 1;
+}
+.about-journey__row--right .about-journey__image {
+  grid-column: 2;
+  grid-row: 1;
+}
+.about-journey__row--right .about-journey__text {
+  grid-column: 1;
+  grid-row: 1;
+}
+.about-journey__image {
+  width: 470px;
+  height: 244px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 164, 255, 0.24);
+  background: #0a0715;
+  box-shadow: 0 18px 38px rgba(55, 21, 110, 0.22), inset 0 0 30px rgba(166, 74, 255, 0.1);
+  transition: opacity 800ms ease, transform 800ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.about-journey__row--left .about-journey__image {
+  border-radius: 77px 18px 18px 77px;
+  transform: translateX(-40px);
+}
+.about-journey__row--right .about-journey__image {
+  border-radius: 18px 77px 77px 18px;
+  transform: translateX(40px);
+}
+.about-journey__image svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.about-journey__row:not(.is-visible) .about-journey__image {
+  opacity: 0;
+}
+.about-journey__row.is-visible .about-journey__image {
+  opacity: 1;
+  transform: translateX(0);
+}
+.about-journey__text {
+  display: flex;
+  max-width: 470px;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #171124;
+}
+.about-journey__text > * {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 700ms ease, transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.about-journey__text > *:nth-child(1) { transition-delay: 90ms; }
+.about-journey__text > *:nth-child(2) { transition-delay: 150ms; }
+.about-journey__text > *:nth-child(3) { transition-delay: 210ms; }
+.about-journey__text > *:nth-child(4) { transition-delay: 270ms; }
+.about-journey__text > *:nth-child(5) { transition-delay: 330ms; }
+.about-journey__row.is-visible .about-journey__text > * {
+  opacity: 1;
+  transform: none;
+}
+.about-journey__number {
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 1px solid rgba(112, 36, 216, 0.18);
+  border-radius: 14px;
+  background: #eee5ff;
+  color: #7024d8;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.about-journey__text h2 {
+  margin: 1.15rem 0 0;
+  color: #171124;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 2.8vw, 2.45rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.04;
+}
+.about-journey__text p {
+  max-width: 450px;
+  margin: 0.9rem 0 0;
+  color: #4d465e;
+  font-family: var(--font-body);
+  font-size: 0.94rem;
+  line-height: 1.7;
+}
+.about-journey__text p + p {
+  margin-top: 0.55rem;
+}
+
+@media (max-width: 900px) {
+  .about-journey__row {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+    gap: 2rem;
+  }
+  .about-journey__image {
+    width: 100%;
+  }
+  .about-journey__text h2 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 639px) {
+  .about-journey__container {
+    padding-bottom: 230px;
+  }
+  .about-journey__curve-track { stroke-width: 6px; }
+  .about-journey__curve-glow { stroke-width: 16px; filter: blur(7px); }
+  .about-journey__curve-core { stroke-width: 6px; }
+  .about-journey__end-glow {
+    right: -260px;
+    bottom: -250px;
+    width: 500px;
+    height: 500px;
+  }
+  .about-journey__row,
+  .about-journey__row--left,
+  .about-journey__row--right {
+    display: flex;
+    min-height: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.15rem;
+    padding: 28px 0;
+  }
+  .about-journey__image,
+  .about-journey__row--left .about-journey__image,
+  .about-journey__row--right .about-journey__image {
+    width: calc(100% - 56px);
+    height: 210px;
+    margin-inline: 28px;
+    border-radius: 30px 18px 18px 30px;
+  }
+  .about-journey__row--right .about-journey__image {
+    border-radius: 18px 30px 30px 18px;
+  }
+  .about-journey__text,
+  .about-journey__row--left .about-journey__text,
+  .about-journey__row--right .about-journey__text {
+    width: calc(100% - 56px);
+    max-width: none;
+    margin-inline: 28px;
+  }
+  .about-journey__text h2 {
+    font-size: clamp(1.75rem, 8vw, 2.35rem);
+  }
+  .about-journey__text p {
+    font-size: 0.92rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-journey__image,
+  .about-journey__text > * {
+    transition: none;
+  }
+  .about-journey__row--left .about-journey__image,
+  .about-journey__row--right .about-journey__image,
+  .about-journey__row.is-visible .about-journey__image,
+  .about-journey__text > * {
+    opacity: 1;
+    transform: none;
+  }
+}
